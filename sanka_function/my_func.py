@@ -4,7 +4,8 @@ import urllib.request
 import urllib.error
 
 def lambda_handler(event, context):
-    json_event = json.loads(event["body"])
+    event_json = json.dumps(event)
+    json_event = json.loads(event_json)
 
     payload = {"text": f"Issue Created: {json_event['issue']['html_url']}"}
     data = json.dumps(payload).encode("utf-8")
